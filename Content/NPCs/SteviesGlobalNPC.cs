@@ -11,6 +11,38 @@ namespace SteviesMod.Content.NPCs
 {
     public class SteviesGlobalNPC : GlobalNPC
     {
+        public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
+        {
+            if (npc.type == NPCID.Werewolf)
+                switch (item.type)
+                {
+                    case ItemID.SilverAxe:
+                    case ItemID.SilverBroadsword:
+                    case ItemID.SilverHammer:
+                    case ItemID.SilverPickaxe:
+                    case ItemID.SilverShortsword:
+                        damage *= 2;
+                        break;
+                }
+            base.OnHitByItem(npc, player, item, damage, knockback, crit);
+        }
+        public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
+        {
+            if (npc.type == NPCID.Werewolf)
+                switch (projectile.type)
+                {
+                    case ProjectileID.SilverCoin:
+                    case ProjectileID.SapphireBolt:
+                        damage *= 2;
+                        break;
+
+                    case ProjectileID.Bullet:
+                        if (Main.player[Main.myPlayer].HasItem(ItemID.SilverBullet)) //pretty ghetto way of doing this but eh
+                            damage *= 2;
+                                break;
+                }
+            base.OnHitByProjectile(npc, projectile, damage, knockback, crit);
+        }
         public override void NPCLoot(NPC npc)
         {
             switch (npc.type)
