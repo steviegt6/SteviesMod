@@ -54,6 +54,29 @@ namespace SteviesMod
                         default:
                             break;
                     }
+            if (player.ZoneRockLayerHeight)
+                if (Main.rand.NextBool(10))
+                    switch (Main.rand.Next(6))
+                    {
+                        case 0:
+                            caughtType = ItemID.BandofRegeneration;
+                            break;
+                        case 1:
+                            caughtType = ItemID.MagicMirror;
+                            break;
+                        case 2:
+                            caughtType = ItemID.CloudinaBottle;
+                            break;
+                        case 3:
+                            caughtType = ItemID.HermesBoots;
+                            break;
+                        case 4:
+                            caughtType = ItemID.EnchantedBoomerang;
+                            break;
+                        case 5:
+                            caughtType = ItemID.ShoeSpikes;
+                            break;
+                    }
             base.CatchFish(fishingRod, bait, power, liquidType, poolSize, worldLayer, questFish, ref caughtType, ref junk);
         }
     }
