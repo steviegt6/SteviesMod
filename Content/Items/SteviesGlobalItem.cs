@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SteviesMod.Content.Items.Consumables.Upgrades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -89,6 +90,28 @@ namespace SteviesMod.Content.Items
 
             }
             base.ModifyTooltips(item, tooltips);
+        }
+        public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
+        {
+            int result = 0;
+            int stack = 1;
+            switch (extractType)
+            {
+                case ItemID.DesertFossil:
+                    if (Main.rand.Next(100) == 0)
+                        if (Main.rand.Next(50) == 0)
+                        {
+                            stack = 1;
+                            result = ModContent.ItemType<MysteriousFossil>();
+                        }
+                    break;
+            }
+            if (result > 0)
+            {
+                resultType = result;
+                resultStack = stack;
+            }
+            base.ExtractinatorUse(extractType, ref resultType, ref resultStack);
         }
     }
 }

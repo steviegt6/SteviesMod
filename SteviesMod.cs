@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using System.IO;
 using SteviesMod.Content.Items.Consumables.Upgrades;
 using SteviesMod.Content.Tiles.Jungle.Natural;
+using Terraria.UI;
+using System.Collections.Generic;
 
 namespace SteviesMod
 {
@@ -17,12 +19,36 @@ namespace SteviesMod
 		private static int UI_ScreenAnchorX = Terraria.Main.screenWidth - 800;
 		private static int UIDisplay_ManaPerStar;
 
+		internal Texture2D originalMinimap;
+
 		public override void Load()
 		{
+			originalMinimap = Main.miniMapFrameTexture;
+
 			On.Terraria.Main.DrawInterface_Resources_Mana += NewDrawMana;
 			base.Load();
 		}
-
+        public override void Unload()
+        {
+			Main.miniMapFrameTexture = originalMinimap;
+			base.Unload();
+        }
+        public override void UpdateUI(GameTime gameTime) //this is a very no-no cringe bad dont do this way of doing this, wouldnt recommend
+        {
+			if (Main.player[Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils <= 0)
+				Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossilEmpty");
+			if (Main.player[Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils == 1)
+				Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil20");
+			if (Main.player[Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils == 2)
+				Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil40");
+			if (Main.player[Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils == 3)
+				Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil60");
+			if (Main.player[Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils == 4)
+				Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil80");
+			if (Main.player[Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils >= 5)
+				Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil100");
+			base.UpdateUI(gameTime);
+        }
         private void NewDrawMana(On.Terraria.Main.orig_DrawInterface_Resources_Mana orig)
         {
 			if (Terraria.Main.player[Terraria.Main.myPlayer].statManaMax2 / 10 >= 20)

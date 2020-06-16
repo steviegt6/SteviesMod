@@ -15,15 +15,18 @@ namespace SteviesMod
         public static SteviesModPlayer Instance;
 
         public int arcaneFruits;
+        public int mysteriousFossils;
         public override void ResetEffects()
         {
-            player.statManaMax2 += arcaneFruits * 5;
+            player.statManaMax2 += 5 * arcaneFruits;
+            player.pickSpeed -= 0.20f * mysteriousFossils;
             base.ResetEffects();
         }
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {
             ModPacket packet = mod.GetPacket();
             packet.Write(arcaneFruits);
+            packet.Write(mysteriousFossils);
             packet.Send(toWho, fromWho);
             base.SyncPlayer(toWho, fromWho, newPlayer);
         }
@@ -32,11 +35,13 @@ namespace SteviesMod
             return new TagCompound
             {
                 { "arcaneFruits", arcaneFruits },
+                { "mysteriousFossils", mysteriousFossils },
             };
         }
         public override void Load(TagCompound tag)
         {
             arcaneFruits = tag.GetInt("arcaneFruits");
+            mysteriousFossils = tag.GetInt("mysteriousFossils");
             base.Load(tag);
         }
         public bool ZonePurity()
