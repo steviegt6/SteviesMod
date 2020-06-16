@@ -6,11 +6,39 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace SteviesMod
 {
     public class SteviesModPlayer : ModPlayer
     {
+        public static SteviesModPlayer Instance;
+
+        public int arcaneFruits;
+        public override void ResetEffects()
+        {
+            player.statManaMax2 += arcaneFruits * 5;
+            base.ResetEffects();
+        }
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            ModPacket packet = mod.GetPacket();
+            packet.Write(arcaneFruits);
+            packet.Send(toWho, fromWho);
+            base.SyncPlayer(toWho, fromWho, newPlayer);
+        }
+        public override TagCompound Save()
+        {
+            return new TagCompound
+            {
+                { "arcaneFruits", arcaneFruits },
+            };
+        }
+        public override void Load(TagCompound tag)
+        {
+            arcaneFruits = tag.GetInt("arcaneFruits");
+            base.Load(tag);
+        }
         public bool ZonePurity()
         {
             if (!player.ZoneBeach && !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneDesert && !player.ZoneDungeon && !player.ZoneGlowshroom && !player.ZoneHoly && !player.ZoneJungle && !player.ZoneOldOneArmy && !player.ZoneSnow && !player.ZoneUndergroundDesert)
