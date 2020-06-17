@@ -33,11 +33,11 @@ namespace SteviesMod.Content.Items.Consumables.Upgrades
         }
         public override bool CanUseItem(Player player)
         {
-            return player.statManaMax == 200 && player.GetModPlayer<SteviesModPlayer>().arcaneFruits < 10;
+            return player.statManaMax >= 200 && player.GetModPlayer<SteviesModPlayer>().arcaneFruits < 10;
         }
         public override bool UseItem(Player player)
         {
-            if (player.itemAnimation > 0 && player.statManaMax >= 200 && player.statManaMax < 250 && player.itemTime == 0)
+            if (player.itemAnimation > 0 && player.statManaMax >= 200 && player.itemTime == 0)
             {
                 player.itemTime = PlayerHooks.TotalUseTime(item.useTime, player, item);
                 player.statManaMax2 += 5;
