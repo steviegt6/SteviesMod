@@ -98,12 +98,11 @@ namespace SteviesMod.Content.Items
             switch (extractType)
             {
                 case ItemID.DesertFossil:
-                    if (Main.rand.Next(100) == 0)
-                        if (Main.rand.Next(50) == 0)
-                        {
-                            stack = 1;
-                            result = ModContent.ItemType<MysteriousFossil>();
-                        }
+                    if (Main.rand.Next(750) == 0)
+                    {
+                        stack = 1;
+                        result = ModContent.ItemType<MysteriousFossil>();
+                    }
                     break;
             }
             if (result > 0)
