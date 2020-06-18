@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SteviesMod.Content.Items.Consumables.Upgrades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,21 @@ namespace SteviesMod.Content.NPCs
 {
     public class SteviesGlobalNPC : GlobalNPC
     {
+        public override void GetChat(NPC npc, ref string chat)
+        {
+            Player player = Main.LocalPlayer;
+            switch (npc.type)
+            {
+                case NPCID.Nurse:
+                    if (Main.rand.NextBool(100) && !player.GetModPlayer<SteviesModPlayer>().extendedLungs)
+                    {
+                        Item.NewItem(player.position, ModContent.ItemType<LungExtensionCard>(), 1, false, 0, true);
+                        chat = "Shh! Don't tell anyone I handed you this card.";
+                    }
+                    break;
+            }
+            base.GetChat(npc, ref chat);
+        }
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
             if (npc.type == NPCID.Werewolf)

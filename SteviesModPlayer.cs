@@ -16,10 +16,13 @@ namespace SteviesMod
 
         public int arcaneFruits;
         public int mysteriousFossils;
+        public bool extendedLungs;
         public override void ResetEffects()
         {
             player.statManaMax2 += 5 * arcaneFruits;
             player.pickSpeed -= 0.20f * mysteriousFossils;
+            if (extendedLungs)
+                player.breathMax = 300;
             base.ResetEffects();
         }
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
@@ -27,6 +30,7 @@ namespace SteviesMod
             ModPacket packet = mod.GetPacket();
             packet.Write(arcaneFruits);
             packet.Write(mysteriousFossils);
+            packet.Write(extendedLungs);
             packet.Send(toWho, fromWho);
             base.SyncPlayer(toWho, fromWho, newPlayer);
         }
@@ -36,12 +40,14 @@ namespace SteviesMod
             {
                 { "arcaneFruits", arcaneFruits },
                 { "mysteriousFossils", mysteriousFossils },
+                { "extendedLungs", extendedLungs }
             };
         }
         public override void Load(TagCompound tag)
         {
             arcaneFruits = tag.GetInt("arcaneFruits");
             mysteriousFossils = tag.GetInt("mysteriousFossils");
+            extendedLungs = tag.GetBool("extendedLungs");
             base.Load(tag);
         }
         public bool ZonePurity()
