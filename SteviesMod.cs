@@ -27,7 +27,7 @@ namespace SteviesMod
 		{
 			originalMinimap = Terraria.Main.miniMapFrameTexture;
 
-			Main.versionNumber = "v1.3.5.3\nStevie's Mod v1.0.0";
+			Main.versionNumber = "v1.3.5.3\nStevie's Mod v1.0.0 Public Build 2";
 
 			On.Terraria.Main.DrawInterface_Resources_Mana += NewDrawMana;
 			On.Terraria.Main.DrawInterface_Resources_Breath += NewDrawBreath;
