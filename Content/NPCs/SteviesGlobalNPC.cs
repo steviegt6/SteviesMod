@@ -12,6 +12,20 @@ namespace SteviesMod.Content.NPCs
 {
     public class SteviesGlobalNPC : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
+        public bool switchBlueSlime = true;
+        public override void AI(NPC npc)
+        {
+            switch (npc.type)
+            {
+                case NPCID.BlueSlime:
+                    if (npc.netID == NPCID.BlueSlime && Main.rand.NextBool(15) && switchBlueSlime && Main.expertMode && NPC.downedSlimeKing)
+                        npc.Transform(NPCID.SlimeSpiked);
+                    break;
+            }
+            switchBlueSlime = false;
+            base.AI(npc);
+        }
         public override void GetChat(NPC npc, ref string chat)
         {
             Player player = Main.LocalPlayer;
