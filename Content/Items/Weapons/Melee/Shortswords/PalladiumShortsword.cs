@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +22,7 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Shortswords
             item.damage = 28;
             item.useAnimation = 20;
             item.useTime = 20;
-            //item.scale = 1.0f;
+            item.scale = 1.1f;
             item.value = ((27 * 100) * 9) * 5;
             item.useStyle = ItemUseStyleID.Stabbing;
             item.useTurn = false;
@@ -32,10 +33,15 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Shortswords
             item.autoReuse = true;
             base.SetDefaults();
         }
+        public override void HoldItem(Player player)
+        {
+            player.armorPenetration += 10;
+            base.HoldItem(player);
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CobaltBar, 9);
+            recipe.AddIngredient(ItemID.PalladiumBar, 9);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

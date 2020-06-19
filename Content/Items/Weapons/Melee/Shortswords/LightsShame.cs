@@ -18,6 +18,7 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Shortswords
         {
             item.width = item.width = 32;
             item.useAnimation = 15;
+            item.damage = 12;
             item.useTime = 15;
             item.scale = 1.1f;
             item.value = ((30 * 100) * 7) * 5;

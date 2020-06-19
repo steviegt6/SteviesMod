@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -20,7 +21,7 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Shortswords
             item.damage = 36;
             item.useAnimation = 22;
             item.useTime = 22;
-            //item.scale = 1.0f;
+            item.scale = 1.2f;
             item.value = ((85 * 100) * 10) * 5;
             item.useStyle = ItemUseStyleID.Stabbing;
             item.useTurn = false;
@@ -30,6 +31,11 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Shortswords
             item.rare = ItemRarityID.LightRed;
             item.autoReuse = true;
             base.SetDefaults();
+        }
+        public override void HoldItem(Player player)
+        {
+            player.armorPenetration += 15;
+            base.HoldItem(player);
         }
         public override void AddRecipes()
         {

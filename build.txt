@@ -1,5 +1,5 @@
 displayName = Stevie's Mod
 author = convicted tomatophile (Stevie)
-version = 0.1.1
+version = 0.1.2
 icon = icon.png
 homepage = https://discord.com/invite/qrZ4Bpz
