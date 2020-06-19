@@ -1,4 +1,5 @@
-﻿using SteviesMod.Content.Items.Consumables.Upgrades;
+﻿using Microsoft.Xna.Framework;
+using SteviesMod.Content.Items.Consumables.Upgrades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace SteviesMod.Content.NPCs
                     }
                     break;
             }
+            CombatText.NewText(npc.Hitbox, Color.White, chat);
             base.GetChat(npc, ref chat);
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)

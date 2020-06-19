@@ -10,6 +10,7 @@ Stevie's Mod is a general content mod for Terraria (wow!).
 - Permanent mana upgrade.
 - Permanent mining speed upgrade.
 - 2 new coin portals.
+- Other stuff!
 
 Notable features:
 Lung Extension Card - An item rarely obtained from chatting with the nurse. Use it to increase your maximum breath by 50% and turn your bubbles from boring blue bubbles, to cool diamond bubbles.
