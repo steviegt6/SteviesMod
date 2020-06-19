@@ -13,6 +13,7 @@ using Terraria.UI;
 using System.Collections.Generic;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
+using SteviesMod.Utils;
 
 namespace SteviesMod
 {
@@ -41,7 +42,12 @@ namespace SteviesMod
 
 			base.Unload();
 		}
-		private void NewDrawBreath(On.Terraria.Main.orig_DrawInterface_Resources_Breath orig)
+        public override void AddRecipes()
+        {
+			RecipeHelper.RemoveEndlessQuiverRecipe(this);
+            base.AddRecipes();
+        }
+        private void NewDrawBreath(On.Terraria.Main.orig_DrawInterface_Resources_Breath orig)
         {
 			bool flag = false;
 			if (Terraria.Main.player[Terraria.Main.myPlayer].dead)
