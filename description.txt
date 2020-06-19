@@ -1,1 +1,20 @@
-Stevie's Mod is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Wanna know exactly when the mod gets updated? Wanna suggest new features? Interact with the community? Get access to unreleased updates? Then join the Discord(!): https://discord.com/invite/qrZ4Bpz
+
+This mod is small and currently a heavy W.I.P.! No content is final and stuff is likely to change.
+
+Stevie's Mod is a general content mod for Terraria (wow!).
+
+- 20+ new items (crazy, huh?)
+- 1 new tile (lmao)
+- Permanent breath upgrade! :D
+- Permanent mana upgrade.
+- Permanent mining speed upgrade.
+- 2 new coin portals.
+
+Notable features:
+Lung Extension Card - An item rarely obtained from chatting with the nurse. Use it to increase your maximum breath by 50% and turn your bubbles from boring blue bubbles, to cool diamond bubbles.
+Arcane Fruit - Similar to Life Fruit. Consumable up to 10 times, increasing your mana by 5 each time. Every time you use one, a star turns gold (Mana stars cap at 10, you can gain more mana still, but you will only be able to see up to 10 stars). They grow in the jungle once a mechanical boss has been defeated, like Life Fruit.
+Mysterious Fossil - Usable up to 5 times, extracted from Desert Fossils at the Extractinator. Increases your pick speed by 20% each time (kinda OP, will likely lower). You can view how much your pick speed has increased by looking at your minimap.
+Copper and Silver Coin Portals - Not the most useful, especially compared to gold, but they're better than nothing!
+
+(Homepage is temporarily my Discord server until I get a forum post set-up to my liking.)
