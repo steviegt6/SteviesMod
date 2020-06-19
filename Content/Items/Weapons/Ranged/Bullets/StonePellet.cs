@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
 {
-    public class StonePellet : ModItem
+    public class StonePellet : ModItem //unused item
     {
         public override void SetStaticDefaults()
         {
@@ -30,14 +30,6 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
             item.shootSpeed = 4f;
             item.ammo = AmmoID.Bullet;
             base.SetDefaults();
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.StoneBlock);
-            recipe.AddTile(ItemID.WorkBench);
-            recipe.SetResult(this, 70);
-            base.AddRecipes();
         }
     }
 }
