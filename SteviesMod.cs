@@ -24,21 +24,41 @@ namespace SteviesMod
 
 		internal Texture2D originalMinimap;
 
+		internal Texture2D originalLogoTexture;
+		internal Texture2D originalLogo2Texture;
+
 		public override void Load()
 		{
 			originalMinimap = Terraria.Main.miniMapFrameTexture;
 
-			Main.versionNumber = "Terraria v1.3.5.3\nStevie's Mod v0.1.3 (Beta Build 4)";
+			originalLogoTexture = Main.logoTexture;
+			originalLogo2Texture = Main.logo2Texture;
+
+			Main.versionNumber = "Terraria v1.3.5.3\nStevie's Mod v0.1.4 (Beta Build 5)";
+
+			Main.OnTick += SwapLogo;
 
 			On.Terraria.Main.DrawInterface_Resources_Mana += NewDrawMana;
 			On.Terraria.Main.DrawInterface_Resources_Breath += NewDrawBreath;
 			base.Load();
+		}
+		private void SwapLogo()
+		{
+			Mod Overhaul = ModLoader.GetMod("TerrariaOverhaul");
+			if (Main.gameMenu && Overhaul == null && !Main.dedServ)
+			{
+				Main.logoTexture = GetTexture("UI/logoDay2");
+				Main.logo2Texture = GetTexture("UI/logoNight2");
+			}
 		}
         public override void Unload()
 		{
 			Terraria.Main.miniMapFrameTexture = originalMinimap;
 
 			Main.versionNumber = "v1.3.5.3";
+
+			Main.logoTexture = originalLogoTexture;
+			Main.logo2Texture = originalLogo2Texture;
 
 			base.Unload();
 		}
