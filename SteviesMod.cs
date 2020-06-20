@@ -50,15 +50,22 @@ namespace SteviesMod
 				Main.logoTexture = GetTexture("UI/logoDay2");
 				Main.logo2Texture = GetTexture("UI/logoNight2");
 			}
+			else
+            {
+				Main.logoTexture = originalLogoTexture;
+				Main.logo2Texture = originalLogo2Texture;
+            }
 		}
         public override void Unload()
 		{
 			Terraria.Main.miniMapFrameTexture = originalMinimap;
 
-			Main.versionNumber = "v1.3.5.3";
-
 			Main.logoTexture = originalLogoTexture;
 			Main.logo2Texture = originalLogo2Texture;
+
+			Main.OnTick -= SwapLogo;
+
+			Main.versionNumber = "v1.3.5.3";
 
 			base.Unload();
 		}
