@@ -44,7 +44,8 @@ namespace SteviesMod
 		}
         public override void AddRecipes()
         {
-			RecipeHelper.RemoveEndlessQuiverRecipe(this);
+			RecipeHelper.EditEndlessQuiverRecipe(this);
+			RecipeHelper.EditMusketPouchRecipe(this);
             base.AddRecipes();
         }
         private void NewDrawBreath(On.Terraria.Main.orig_DrawInterface_Resources_Breath orig)

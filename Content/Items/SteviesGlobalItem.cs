@@ -70,6 +70,9 @@ namespace SteviesMod.Content.Items
                     item.rare = ItemRarityID.White;
                     item.SetNameOverride("Endless Wooden Quiver");
                     break;
+                case ItemID.EndlessMusketPouch:
+                    item.rare = ItemRarityID.White;
+                    break;
             }
             base.SetDefaults(item);
         }
