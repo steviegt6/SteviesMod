@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using SteviesMod.Utils;
+using System.Runtime.InteropServices;
+using Microsoft.Xna.Framework;
 
 namespace SteviesMod.Content.Items.Consumables.Buckets
 {
@@ -14,6 +16,7 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
     {
         public static int funnycount = 0;
         public static int funnyintgoup;
+        public static int funnyintgoup2;
 
         List<String> funnyliquidshahaha = new List<String>();
 
@@ -123,12 +126,26 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             tooltips.Add(new TooltipLine(mod, "Tooltip", "Does not contain any trace of " + funnyliquidshahaha[funnycount]));
 
             funnyintgoup++;
+            funnyintgoup2++;
 
             if (funnyintgoup >= 2)
             {
                 funnycount = Main.rand.Next(funnyliquidshahaha.Count);
 
                 funnyintgoup = 0;
+            }
+            if(funnyintgoup2 >= 10)
+            {
+                foreach (TooltipLine line in tooltips)
+                    if (line.Name == "ItemName")
+                        line.overrideColor = new Color(Main.rand.Next(255), Main.rand.Next(255), Main.rand.Next(255));
+
+                for (int i = 1; i < tooltips.Count; i++)
+                {
+                    tooltips[i].overrideColor = new Color(Main.rand.Next(255), Main.rand.Next(255), Main.rand.Next(255));
+                }
+
+                funnyintgoup2 = 0;
             }
             base.ModifyTooltips(tooltips);
         }
