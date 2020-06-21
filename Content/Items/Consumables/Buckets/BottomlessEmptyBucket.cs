@@ -34,7 +34,7 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             "nothing",
             "soup",
             "broth",
-            "secretion",
+            "a secretion",
             "gold",
             "anti-water",
             "diamond",
@@ -45,22 +45,22 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             "something Cassy will like",
             "pertinent medical knowledge",
             "my life story",
-            "blood of Christ",
+            "the blood of Christ",
             "Hic est enim Calix Sánguinis mei",
             "Smilodon blood",
             "passenger pigeon blood",
             "Thomas Jefferson's blood",
             "canis lupus",
-            "saliva of equus ferus caballus",
-            "urine of phascolarctos cinereus",
-            "cerebrospinal fluid of phoberomys pattersoni",
-            "room-temperature superconductor",
+            "the saliva of equus ferus caballus",
+            "the urine of phascolarctos cinereus",
+            "the cerebrospinal fluid of phoberomys pattersoni",
+            "a room-temperature superconductor",
             "leukemia",
             "something OUT OF RANGE",
             "toothpaste",
-            "liquid",
+            "any liquid",
             "something funny",
-            "filler",
+            "FILLER",
             "padding",
             "something repetitive",
             "glue",
@@ -128,13 +128,13 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             funnyintgoup++;
             funnyintgoup2++;
 
-            if (funnyintgoup >= 2)
+            if (funnyintgoup >= 5)
             {
                 funnycount = Main.rand.Next(funnyliquidshahaha.Count);
 
                 funnyintgoup = 0;
             }
-            if(funnyintgoup2 >= 10)
+            if(funnyintgoup2 >= 1)
             {
                 foreach (TooltipLine line in tooltips)
                     if (line.Name == "ItemName")
