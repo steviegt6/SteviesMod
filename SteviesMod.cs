@@ -38,7 +38,7 @@ namespace SteviesMod
 			originalLogoTexture = Main.logoTexture;
 			originalLogo2Texture = Main.logo2Texture;
 
-			Main.versionNumber = "Terraria v1.3.5.3\nStevie's Mod v0.1.8 (Beta Build 10)";
+			Main.versionNumber = "Terraria v1.3.5.3\nStevie's Mod v0.1.9 (Beta Build 11)";
 
 			Main.OnTick += SwapLogo;
 
