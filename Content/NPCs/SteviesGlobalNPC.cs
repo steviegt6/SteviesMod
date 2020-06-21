@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using SteviesMod.Content.Items.Consumables.OtherThrowing;
 using SteviesMod.Content.Items.Consumables.Upgrades;
+using SteviesMod.Content.Items.Weapons.Melee.Shortswords;
+using SteviesMod.Content.Items.Weapons.Ranged.Bullets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +36,7 @@ namespace SteviesMod.Content.NPCs
             switch (npc.type)
             {
                 case NPCID.Nurse:
-                    if (Main.rand.NextBool(100) && !player.GetModPlayer<SteviesModPlayer>().extendedLungs)
+                    if (Main.rand.NextBool(100) && !player.GetModPlayer<SteviesModPlayer>().extendedLungs && !Main.player[Main.myPlayer].HasItem(ModContent.ItemType<LungExtensionCard>()))
                     {
                         Item.NewItem(player.position, ModContent.ItemType<LungExtensionCard>(), 1, false, 0, true);
                         chat = "Shh! Don't tell anyone I handed you this card.";
@@ -69,7 +72,8 @@ namespace SteviesMod.Content.NPCs
                         break;
 
                     case ProjectileID.Bullet:
-                        if (Main.player[Main.myPlayer].HasItem(ItemID.SilverBullet)) //pretty ghetto way of doing this but eh
+                        //pretty poor way of doing this but eh
+                        if (Main.player[Main.myPlayer].HasItem(ItemID.SilverBullet) || Main.player[Main.myPlayer].HasItem(ModContent.ItemType<EndlessSilverPouch>()))
                             damage *= 2;
                                 break;
                 }
@@ -91,8 +95,27 @@ namespace SteviesMod.Content.NPCs
                 case NPCID.SkeletonTopHat:
                 case NPCID.SkeletonAstonaut:
                 case NPCID.SkeletonAlien:
-                    if (Main.rand.Next(150) == 0)
-                        Item.NewItem(npc.getRect(), ModContent.ItemType<Items.Weapons.Melee.Shortswords.BoneKnife>());
+                    if (Main.rand.NextBool(150))
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<BoneKnife>());
+                    break;
+
+                case NPCID.GoblinArcher:
+                case NPCID.GoblinPeon:
+                case NPCID.GoblinScout:
+                case NPCID.GoblinSorcerer:
+                case NPCID.GoblinThief:
+                    if (Main.rand.NextBool(250))
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<SpikyPouch>());
+                    break;
+
+                case NPCID.GoblinSummoner:
+                    if (Main.rand.NextBool(150))
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<SpikyPouch>());
+                    break;
+
+                case NPCID.GoblinTinkerer:
+                    if (Main.rand.NextBool(10))
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<SpikyPouch>());
                     break;
             }
             base.NPCLoot(npc);
