@@ -19,6 +19,10 @@ namespace SteviesMod
 {
 	public class SteviesMod : Mod
 	{
+		//mod helpers
+		public static string GithubUserName => "Steviegt6";
+		public static string GithubProjectName => "SteviesMod";
+
 		private static int UI_ScreenAnchorX = Terraria.Main.screenWidth - 800;
 		private static int UIDisplay_ManaPerStar;
 
@@ -34,7 +38,7 @@ namespace SteviesMod
 			originalLogoTexture = Main.logoTexture;
 			originalLogo2Texture = Main.logo2Texture;
 
-			Main.versionNumber = "Terraria v1.3.5.3\nStevie's Mod v0.1.6 (Beta Build 8)";
+			Main.versionNumber = "Terraria v1.3.5.3\nStevie's Mod v0.1.8 (Beta Build 10)";
 
 			Main.OnTick += SwapLogo;
 
@@ -64,6 +68,9 @@ namespace SteviesMod
 			Main.logo2Texture = originalLogo2Texture;
 
 			Main.OnTick -= SwapLogo;
+
+			On.Terraria.Main.DrawInterface_Resources_Mana -= NewDrawMana;
+			On.Terraria.Main.DrawInterface_Resources_Breath -= NewDrawBreath;
 
 			Main.versionNumber = "v1.3.5.3";
 
