@@ -104,7 +104,11 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             "eyedrops",
             "glass",
             "feces",
-            "iron"
+            "iron",
+            "\n\n",
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+            "\n\n\n\n\n\n\n",
+            "\n.\n.\n.\n.\n.\n.\n."
         };
         public override void SetStaticDefaults()
         {
