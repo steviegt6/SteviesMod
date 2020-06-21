@@ -70,7 +70,10 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             "cringe",
             "",
             "new line",
-            "\\n"
+            "\\n",
+            "\n",
+            "\n\n\n\n",
+            "<none>"
         };
         public override void SetStaticDefaults()
         {
