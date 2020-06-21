@@ -19,7 +19,7 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
         public override void SetDefaults()
         {
             item.shootSpeed = 4.5f;
-            item.shoot = ProjectileID.PartyBullet;
+            item.shoot = ProjectileID.Bullet;
             item.damage = 9;
             item.width = 26;
             item.height = 26;

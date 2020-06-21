@@ -14,6 +14,7 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endless Ichor Pouch");
+            Tooltip.SetDefault("Decreases target's defense");
             base.SetStaticDefaults();
         }
         public override void SetDefaults()

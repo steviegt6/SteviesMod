@@ -27,5 +27,20 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
         {
             return LiquidHelper.PlaceLiquid(player, LiquidHelper.Liquids.Lava, 2);
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<BottomlessEmptyBucket>());
+            recipe.needLava = true;
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.LavaBucket, 30);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+            base.AddRecipes();
+        }
     }
 }

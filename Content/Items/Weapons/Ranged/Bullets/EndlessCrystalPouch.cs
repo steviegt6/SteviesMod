@@ -14,7 +14,7 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endless Crystal Pouch");
-            Tooltip.SetDefault("Chases after your enemy");
+            Tooltip.SetDefault("Creates several crystal shards on impact");
             base.SetStaticDefaults();
         }
         public override void SetDefaults()

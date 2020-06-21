@@ -13,7 +13,7 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Endless Ichor Pouch");
+            DisplayName.SetDefault("Endless Luminite Pouch");
             Tooltip.SetDefault("'Line 'um up and knock 'em down...'");
             base.SetStaticDefaults();
         }
