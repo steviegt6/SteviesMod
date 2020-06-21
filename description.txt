@@ -10,7 +10,7 @@ Stevie's Mod is a general content mod for Terraria (wow!).
 - Unique permanent mana upgrade.
 - Permanent mining speed upgrade.
 - 2 new coin portals.
-- Infinite ammo items + infinite explosive items.
+- Infinite ammo items + infinite consumables (well... some.).
 - Other stuff!
 
 Notable features:
