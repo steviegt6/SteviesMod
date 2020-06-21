@@ -21,6 +21,8 @@ namespace SteviesMod.Content.Items.Consumables.Explosives
         {
             item.CloneDefaults(ItemID.Beenade);
             item.consumable = false;
+            item.width = 18;
+            item.height = 28;
             item.value = Item.sellPrice(0, 2);
             base.SetDefaults();
         }

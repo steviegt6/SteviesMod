@@ -21,6 +21,8 @@ namespace SteviesMod.Content.Items.Consumables.Explosives
         {
             item.CloneDefaults(ItemID.BouncyDynamite);
             item.consumable = false;
+            item.width = 22;
+            item.height = 40;
             item.value = Item.sellPrice(0, 2);
             base.SetDefaults();
         }

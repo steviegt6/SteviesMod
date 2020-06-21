@@ -20,6 +20,8 @@ namespace SteviesMod.Content.Items.Consumables.Explosives
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Dynamite);
+            item.width = 22;
+            item.height = 40;
             item.consumable = false;
             item.value = Item.sellPrice(0, 2);
             base.SetDefaults();
