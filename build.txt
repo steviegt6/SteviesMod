@@ -1,5 +1,5 @@
 displayName = Stevie's Mod
 author = convicted tomatophile (Stevie) with some sprites from Arcri!
-version = 0.1.9
+version = 0.1.10
 icon = icon.png
 homepage = https://discord.com/invite/qrZ4Bpz
