@@ -14,14 +14,13 @@ namespace SteviesMod.Content.Items.Consumables.OtherThrowing
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bone Throwing Knife Stack");
+            DisplayName.SetDefault("Bone Knife Set");
             base.SetStaticDefaults();
         }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.BoneDagger);
-            item.width = 14;
-            item.height = 28;
+            item.width = item.height = 30;
             item.consumable = false;
             base.SetDefaults();
         }
