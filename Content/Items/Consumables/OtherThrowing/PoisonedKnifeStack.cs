@@ -14,7 +14,7 @@ namespace SteviesMod.Content.Items.Consumables.OtherThrowing
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Poisoned Knife Stack");
+            DisplayName.SetDefault("Poisoned Knife Set");
             base.SetStaticDefaults();
         }
         public override void SetDefaults()
