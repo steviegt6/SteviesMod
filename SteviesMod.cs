@@ -199,7 +199,7 @@ namespace SteviesMod
 		}
         public override void UpdateUI(GameTime gameTime) //this is a very no-no cringe bad dont do this way of doing this, wouldnt recommend
         {
-			if (Terraria.Main.player[Terraria.Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils <= 0)
+			/*if (Terraria.Main.player[Terraria.Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils <= 0)
                 Terraria.Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossilEmpty");
 			if (Terraria.Main.player[Terraria.Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils == 1)
                 Terraria.Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil20");
@@ -210,8 +210,44 @@ namespace SteviesMod
 			if (Terraria.Main.player[Terraria.Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils == 4)
                 Terraria.Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil80");
 			if (Terraria.Main.player[Terraria.Main.myPlayer].GetModPlayer<SteviesModPlayer>().mysteriousFossils >= 5)
-                Terraria.Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil100");
+                Terraria.Main.miniMapFrameTexture = GetTexture("UI/MysteriousFossil100");*/
 			base.UpdateUI(gameTime);
+        }
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+			int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+			if (mouseTextIndex != -1)
+			{
+				layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+					"SteviesMod: Mysterious Fossils",
+					delegate
+					{
+						DrawInterface_Resources_MysteriousFossil();
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+			}
+            base.ModifyInterfaceLayers(layers);
+        }
+        private void DrawInterface_Resources_MysteriousFossil()
+        {
+			if (SteviesModConfig.Instance.fossilUI)
+            {
+				if (Main.LocalPlayer.ghost)
+					return;
+				int increaseAmount = 255 / 5;
+				float scale = 1f;
+				scale += Main.cursorScale - 1f;
+				string text = Lang.inter[0].Value + " " + Main.LocalPlayer.GetModPlayer<SteviesModPlayer>().mysteriousFossils.ToString() + "/5";
+				Vector2 vector = Main.fontMouseText.MeasureString(text);
+				int num15 = (int)-7.5f; //(int)((float)Main.player[Main.myPlayer].statLifeMax2 / 10f);
+				if (!Main.LocalPlayer.ghost)
+				{
+					DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, "Fossils: " + Main.LocalPlayer.GetModPlayer<SteviesModPlayer>().mysteriousFossils.ToString() + "/5", new Vector2((float)(500 + 13 * num15) - vector.X * 0.5f + (float)UI_ScreenAnchorX, 6f), new Microsoft.Xna.Framework.Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+					Main.spriteBatch.Draw(GetTexture("Content/Items/Consumables/Upgrades/MysteriousFossil"), new Vector2((float)(500 + 13 * num15) - vector.X * -0.925f + (float)UI_ScreenAnchorX, 6f), new Microsoft.Xna.Framework.Rectangle(0, 0, GetTexture("Content/Items/Consumables/Upgrades/MysteriousFossil").Width, GetTexture("Content/Items/Consumables/Upgrades/MysteriousFossil").Height), new Microsoft.Xna.Framework.Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, increaseAmount * Main.LocalPlayer.GetModPlayer<SteviesModPlayer>().mysteriousFossils), 0f, default(Vector2), scale, SpriteEffects.None, 0f);
+				}
+			}
         }
         private void NewDrawMana(On.Terraria.Main.orig_DrawInterface_Resources_Mana orig)
         {
