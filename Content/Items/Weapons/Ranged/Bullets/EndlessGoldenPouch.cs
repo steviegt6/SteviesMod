@@ -36,7 +36,7 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
             base.AddRecipes();
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.GoldenBullet, 3996);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
