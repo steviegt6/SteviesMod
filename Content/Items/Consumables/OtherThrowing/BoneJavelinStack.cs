@@ -25,7 +25,7 @@ namespace SteviesMod.Content.Items.Consumables.OtherThrowing
             item.consumable = false;
             base.SetDefaults();
         }
-        public override void AddRecipes()
+        /*public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BoneJavelin, 999);
@@ -33,6 +33,6 @@ namespace SteviesMod.Content.Items.Consumables.OtherThrowing
             recipe.SetResult(this);
             recipe.AddRecipe();
             base.AddRecipes();
-        }
+        }*/
     }
 }
