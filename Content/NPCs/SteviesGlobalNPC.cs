@@ -118,6 +118,11 @@ namespace SteviesMod.Content.NPCs
                     if (Main.rand.NextBool(10))
                         Item.NewItem(npc.getRect(), ModContent.ItemType<SpikyPouch>());
                     break;
+
+                case NPCID.ChaosElemental:
+                    if (Main.rand.NextBool(5))
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<DiscofDiscord>(), Main.rand.Next(2, 5));
+                    break;
             }
             base.NPCLoot(npc);
         }
