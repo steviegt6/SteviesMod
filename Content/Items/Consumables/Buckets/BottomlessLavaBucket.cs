@@ -32,12 +32,13 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ModContent.ItemType<BottomlessEmptyBucket>());
             recipe.needLava = true;
+            recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LavaBucket, 30);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ItemID.LavaBucket, 60);
+            recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
             base.AddRecipes();

@@ -32,12 +32,13 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ModContent.ItemType<BottomlessEmptyBucket>());
             recipe.needHoney = true;
+            recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.HoneyBucket, 30);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ItemID.HoneyBucket, 60);
+            recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
             base.AddRecipes();
