@@ -14,6 +14,7 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Shortswords
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cobalt Shortsword");
+            Tooltip.SetDefault("Can penetrate armor");
         }
         public override void SetDefaults()
         {

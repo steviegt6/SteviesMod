@@ -13,7 +13,7 @@ namespace SteviesMod.Utils
     {
         public static void EditEndlessQuiverRecipe(Mod mod)
         {
-            RecipeFinder recipeFinder = new RecipeFinder();
+            /*RecipeFinder recipeFinder = new RecipeFinder();
             recipeFinder.AddIngredient(ItemID.WoodenArrow, 3996);
             recipeFinder.AddTile(TileID.CrystalBall);
             recipeFinder.SetResult(ItemID.EndlessQuiver);
@@ -23,11 +23,11 @@ namespace SteviesMod.Utils
                 RecipeEditor recipeEditor = new RecipeEditor(recipe);
                 recipeEditor.DeleteTile(TileID.CrystalBall);
                 recipeEditor.AddTile(TileID.WorkBenches);
-            }
+            }*/
         }
         public static void EditMusketPouchRecipe(Mod mod)
         {
-            RecipeFinder recipeFinder = new RecipeFinder();
+            /*RecipeFinder recipeFinder = new RecipeFinder();
             recipeFinder.AddIngredient(ItemID.MusketBall, 3996);
             recipeFinder.AddTile(TileID.CrystalBall);
             recipeFinder.SetResult(ItemID.EndlessMusketPouch);
@@ -37,7 +37,7 @@ namespace SteviesMod.Utils
                 RecipeEditor recipeEditor = new RecipeEditor(recipe);
                 recipeEditor.DeleteTile(TileID.CrystalBall);
                 recipeEditor.AddTile(TileID.WorkBenches);
-            }
+            }*/
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SteviesMod.Content.Items.Consumables.OtherThrowing;
+﻿using SteviesMod.Content.Items.Consumables.Buckets;
+using SteviesMod.Content.Items.Consumables.OtherThrowing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -164,6 +165,21 @@ namespace SteviesMod
                     Item.NewItem(player.position, ItemID.StarAnise, 396, true, 0, true);
                 }
                 if (item.type == ModContent.ItemType<ThrowingKnifeStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.ThrowingKnife, 396, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<BucketofBloodWater>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.BloodWater, 30, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<BucketofHolyWater>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.HolyWater, 30, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<BucketofUnholyWater>())
                 {
                     item.TurnToAir();
                     Item.NewItem(player.position, ItemID.ThrowingKnife, 396, true, 0, true);

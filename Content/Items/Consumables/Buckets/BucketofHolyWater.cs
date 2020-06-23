@@ -26,7 +26,7 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             item.consumable = false;
             base.SetDefaults();
         }
-        public override void AddRecipes()
+        /*public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.HolyWater, 30);
@@ -34,6 +34,6 @@ namespace SteviesMod.Content.Items.Consumables.Buckets
             recipe.SetResult(this);
             recipe.AddRecipe();
             base.AddRecipes();
-        }
+        }*/
     }
 }
