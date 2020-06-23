@@ -29,7 +29,7 @@ namespace SteviesMod.Content.Projectiles
         }
         public override void AI()
         {
-            projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.03f * (float)projectile.direction;
+            projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.09f * (float)projectile.direction;
             projectile.alpha = 0;
             projectile.ai[0] += 1f;
             if (projectile.ai[0] >= 60)

@@ -28,7 +28,7 @@ namespace SteviesMod.Content.Items.Consumables.OtherThrowing
             item.useTime = 20;
             item.UseSound = SoundID.Item8;
             item.rare = ItemRarityID.Lime;
-            item.shootSpeed = 8f;
+            item.shootSpeed = 10f;
             item.maxStack = 99;
             item.shoot = ModContent.ProjectileType<Content.Projectiles.DiscofDiscord>();
             base.SetDefaults();
