@@ -31,8 +31,8 @@ namespace SteviesMod.Content.Items.Consumables.Explosives
         {
             base.AddRecipes();
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BouncyGrenade, 30);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemID.BouncyGrenade, 60);
+            recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
