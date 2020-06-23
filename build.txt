@@ -2,4 +2,4 @@ displayName = Stevie's Mod
 author = convicted tomatophile (Stevie) with some sprites from Arcri and RiverOaken!
 version = 0.1.11
 icon = icon.png
-homepage = https://discord.com/invite/qrZ4Bpz
+homepage = https://forums.terraria.org/index.php?threads/stevies-mod-a-general-content-mod-for-terraria.95031/
