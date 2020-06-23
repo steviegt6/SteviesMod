@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SteviesMod.Content.Items.Consumables.OtherThrowing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -117,6 +118,58 @@ namespace SteviesMod
                             break;
                     }
             base.CatchFish(fishingRod, bait, power, liquidType, poolSize, worldLayer, questFish, ref caughtType, ref junk);
+        }
+        public override void PreUpdate()
+        {
+            foreach (Item item in player.inventory)
+            {
+                if (item.type == ModContent.ItemType<BagofBones>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.Bone, 396, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<BoneJavelinStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.BoneJavelin, 999, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<BoneThrowingKnifeStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.BoneDagger, 396, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<JavelinStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.Javelin, 999, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<PoisonedKnifeStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.PoisonedKnife, 396, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<ShurikenStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.Shuriken, 396, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<SpikyPouch>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.SpikyBall, 999, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<StarAniseStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.StarAnise, 396, true, 0, true);
+                }
+                if (item.type == ModContent.ItemType<ThrowingKnifeStack>())
+                {
+                    item.TurnToAir();
+                    Item.NewItem(player.position, ItemID.ThrowingKnife, 396, true, 0, true);
+                }
+            }
+            base.PreUpdate();
         }
     }
 }
