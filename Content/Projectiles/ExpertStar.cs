@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace SteviesMod.Content.Projectiles
 {
-    public class DiscofDiscord : ModProjectile
+    public class ExpertStar : ModProjectile
     {
         public override void SetStaticDefaults()
         {
