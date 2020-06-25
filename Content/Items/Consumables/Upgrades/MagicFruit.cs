@@ -14,7 +14,7 @@ namespace SteviesMod.Content.Items.Consumables.Upgrades
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arcane Fruit");
+            DisplayName.SetDefault("Star Fruit");
             Tooltip.SetDefault("Permanently increases maximum mana by 5");
         }
         public override void SetDefaults()
