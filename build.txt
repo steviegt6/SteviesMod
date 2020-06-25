@@ -1,5 +1,5 @@
 displayName = Stevie's Mod
-author = convicted tomatophile (Stevie) with some sprites from Arcri and RiverOaken!
+author = convicted tomatophile (Stevie) & the Pixel Placers!
 version = 0.1.13
 icon = icon.png
 homepage = https://forums.terraria.org/index.php?threads/stevies-mod-a-general-content-mod-for-terraria.95031/

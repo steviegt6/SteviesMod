@@ -20,3 +20,8 @@ Copper and Silver Coin Portals - Not the most useful, especially compared to gol
 More endless pouches and quivers, bottomless buckets, and new explosive crates (bomb crate, dynamite crate, etc. which serve as an infinite counterpart to the item they're crafted from).
 NPCs will display their text above their head while talking (along with still displaying it in their message box).
 Disc of Discord, a new item that works like an ender pearl (dropped from Chaos Elementals).
+
+The pixel placers:
+Arcri
+RiverOaken
+Terra ("the real otp?!!?")
