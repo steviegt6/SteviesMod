@@ -14,7 +14,7 @@ Stevie's Mod is a general content mod for Terraria (wow!).
 
 Notable features:
 Lung Extension Card - An item rarely obtained from chatting with the nurse. Use it to increase your maximum breath by 50% and turn your bubbles from boring blue bubbles, to cool diamond bubbles.
-Arcane Fruit - Similar to Life Fruit. Consumable up to 10 times, increasing your mana by 5 each time. Every time you use one, a star turns gold (Mana stars cap at 10, you can gain more mana still, but you will only be able to see up to 10 stars. These stars will divide the maximum amount of mana you have between them, so the stars will still fade accordingly!). They grow in the jungle once a mechanical boss has been defeated, like Life Fruit.
+Star Fruit - Similar to Life Fruit. Consumable up to 10 times, increasing your mana by 5 each time. Every time you use one, a star turns gold (Mana stars cap at 10, you can gain more mana still, but you will only be able to see up to 10 stars. These stars will divide the maximum amount of mana you have between them, so the stars will still fade accordingly!). They grow in the jungle once a mechanical boss has been defeated, like Life Fruit.
 Mysterious Fossil - Usable up to 5 times, extracted from Desert Fossils at the Extractinator. Increases your pick speed by 20% each time (kinda OP, will likely lower). You can view how many fossils you've consumed (up to 5) by looking next to your health.
 Copper and Silver Coin Portals - Not the most useful, especially compared to gold, but they're better than nothing!
 More endless pouches and quivers, bottomless buckets, and new explosive crates (bomb crate, dynamite crate, etc. which serve as an infinite counterpart to the item they're crafted from).
