@@ -32,7 +32,7 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Darts
         {
             base.AddRecipes();
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Seed, 3996);
+            recipe.AddIngredient(ItemID.Seed, 396);
             recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
