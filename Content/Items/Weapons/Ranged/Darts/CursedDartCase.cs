@@ -21,7 +21,7 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Darts
         {
             item.shoot = ProjectileID.CursedDart;
             item.damage = 10;
-            item.width = 26;
+            item.width = 24;
             item.height = 28;
             item.ammo = AmmoID.Dart;
             item.knockBack = 2.2f;
