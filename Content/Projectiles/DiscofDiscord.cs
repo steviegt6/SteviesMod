@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -14,22 +13,22 @@ namespace SteviesMod.Content.Projectiles
         {
             DisplayName.SetDefault("Disc of Discord");
             Main.projFrames[projectile.type] = 1;
-            base.SetStaticDefaults();
         }
+
         public override void SetDefaults()
         {
-			projectile.width = projectile.height = 28;
+            projectile.width = projectile.height = 28;
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.alpha = 255;
             projectile.tileCollide = true;
             projectile.ignoreWater = false;
-			aiType = -1;
-            base.SetDefaults();
+            aiType = -1;
         }
+
         public override void AI()
         {
-            projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.09f * (float)projectile.direction;
+            projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.09f * projectile.direction;
             projectile.alpha = 0;
             projectile.ai[0] += 1f;
             if (projectile.ai[0] >= 60)
@@ -38,10 +37,11 @@ namespace SteviesMod.Content.Projectiles
                 projectile.velocity.X *= 0.98f;
             }
         }
+
         public override void Kill(int timeLeft)
         {
             Player player = Main.LocalPlayer;
-            Vector2 vector51 = default(Vector2);
+            Vector2 vector51 = default;
             vector51.X = projectile.position.X;
             if (player.gravDir == 1f)
             {
@@ -52,14 +52,14 @@ namespace SteviesMod.Content.Projectiles
                 vector51.Y = projectile.position.Y;
             }
             vector51.X -= player.width / 2;
-            if (vector51.X > 50f && vector51.X < (float)(Main.maxTilesX * 16 - 50) && vector51.Y > 50f && vector51.Y < (float)(Main.maxTilesY * 16 - 50))
+            if (vector51.X > 50f && vector51.X < Main.maxTilesX * 16 - 50 && vector51.Y > 50f && vector51.Y < Main.maxTilesY * 16 - 50)
             {
                 int num457 = (int)(vector51.X / 16f);
                 int num456 = (int)(vector51.Y / 16f);
-                if ((Main.tile[num457, num456].wall != 87 || !((double)num456 > Main.worldSurface) || NPC.downedPlantBoss) && !Collision.SolidCollision(vector51, player.width, player.height))
+                if ((Main.tile[num457, num456].wall != 87 || !(num456 > Main.worldSurface) || NPC.downedPlantBoss) && !Collision.SolidCollision(vector51, player.width, player.height))
                 {
                     player.Teleport(vector51, 1);
-                    NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector51.X, vector51.Y, 1);
+                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, vector51.X, vector51.Y, 1);
                     if (player.chaosState)
                     {
                         player.statLife -= player.statLifeMax2 / 7;
@@ -78,7 +78,6 @@ namespace SteviesMod.Content.Projectiles
                     player.AddBuff(88, 360);
                 }
             }
-            base.Kill(timeLeft);
         }
     }
 }

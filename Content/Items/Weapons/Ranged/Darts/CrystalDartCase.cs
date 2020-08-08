@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,8 +10,8 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Darts
         {
             DisplayName.SetDefault("Endless Crystal Dart Case");
             Tooltip.SetDefault("Bounces between enemies");
-            base.SetStaticDefaults();
         }
+
         public override void SetDefaults()
         {
             item.shoot = ProjectileID.CrystalDart;
@@ -29,11 +24,10 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Darts
             item.value = Item.sellPrice(0, 2);
             item.ranged = true;
             item.rare = ItemRarityID.Orange;
-            base.SetDefaults();
         }
+
         public override void AddRecipes()
         {
-            base.AddRecipes();
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.CrystalDart, 3996);
             recipe.AddTile(TileID.CrystalBall);

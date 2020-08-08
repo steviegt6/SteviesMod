@@ -1,11 +1,4 @@
-﻿using SteviesMod.Content.Items.Consumables.Buckets;
-using SteviesMod.Content.Items.Consumables.OtherThrowing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -14,178 +7,135 @@ namespace SteviesMod
 {
     public class SteviesModPlayer : ModPlayer
     {
+        public int arcaneFruits;
+        public bool extendedLungs;
         public static SteviesModPlayer Instance;
 
-        public int arcaneFruits;
-        public int mysteriousFossils;
-        public bool extendedLungs;
         public override void ResetEffects()
         {
             player.statManaMax2 += 5 * arcaneFruits;
-            player.pickSpeed -= 0.20f * mysteriousFossils;
+
             if (extendedLungs)
+            {
                 player.breathMax = 300;
-            base.ResetEffects();
+            }
         }
+
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {
             ModPacket packet = mod.GetPacket();
             packet.Write(arcaneFruits);
-            packet.Write(mysteriousFossils);
             packet.Write(extendedLungs);
             packet.Send(toWho, fromWho);
-            base.SyncPlayer(toWho, fromWho, newPlayer);
         }
+
         public override TagCompound Save()
         {
             return new TagCompound
             {
                 { "arcaneFruits", arcaneFruits },
-                { "mysteriousFossils", mysteriousFossils },
                 { "extendedLungs", extendedLungs }
             };
         }
+
         public override void Load(TagCompound tag)
         {
             arcaneFruits = tag.GetInt("arcaneFruits");
-            mysteriousFossils = tag.GetInt("mysteriousFossils");
             extendedLungs = tag.GetBool("extendedLungs");
-            base.Load(tag);
         }
-        public bool ZonePurity()
-        {
-            if (!player.ZoneBeach && !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneDesert && !player.ZoneDungeon && !player.ZoneGlowshroom && !player.ZoneHoly && !player.ZoneJungle && !player.ZoneOldOneArmy && !player.ZoneSnow && !player.ZoneUndergroundDesert)
-                return true;
-            else
-                return false;
-        }
+
+        public bool ZonePurity => !player.ZoneBeach
+            && !player.ZoneCorrupt
+            && !player.ZoneCrimson
+            && !player.ZoneDesert
+            && !player.ZoneDungeon
+            && !player.ZoneGlowshroom
+            && !player.ZoneHoly
+            && !player.ZoneJungle
+            && !player.ZoneOldOneArmy
+            && !player.ZoneSnow
+            && !player.ZoneUndergroundDesert;
+
+        //Non-exact switch cases to help decrease the chance of catching something.
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {
-            if (junk)
-                return;
-            if (player.ZoneDesert || player.ZoneUndergroundDesert)
-                if (Main.rand.NextBool(15))
+            if (!junk)
+            {
+                if ((player.ZoneDesert || player.ZoneUndergroundDesert) && Main.rand.NextBool(20))
+                {
                     switch (Main.rand.Next(5))
                     {
                         case 0:
                             caughtType = ItemID.FlyingCarpet;
                             break;
+
                         case 1:
                             caughtType = ItemID.SandstorminaBottle;
                             break;
+
                         default:
                             break;
                     }
-            if (ZonePurity())
-                if (Main.rand.NextBool(10))
-                    switch (Main.rand.Next(4))
+                }
+
+                if (ZonePurity)
+                {
+                    if (Main.rand.NextBool(15))
                     {
-                        case 0:
-                            caughtType = ItemID.Spear;
-                            break;
-                        case 1:
-                            caughtType = ItemID.Blowpipe;
-                            break;
-                        case 2:
-                            caughtType = ItemID.WoodenBoomerang;
-                            break;
-                        case 3:
-                            caughtType = ItemID.WandofSparking;
-                            break;
-                        default:
-                            break;
+                        switch (Main.rand.Next(8))
+                        {
+                            case 0:
+                                caughtType = ItemID.Spear;
+                                break;
+
+                            case 1:
+                                caughtType = ItemID.Blowpipe;
+                                break;
+
+                            case 2:
+                                caughtType = ItemID.WoodenBoomerang;
+                                break;
+
+                            case 3:
+                                caughtType = ItemID.WandofSparking;
+                                break;
+
+                            default:
+                                break;
+                        }
                     }
-            if (player.ZoneRockLayerHeight)
-                if (Main.rand.NextBool(10))
-                    switch (Main.rand.Next(6))
+                }
+
+                if (player.ZoneRockLayerHeight && Main.rand.NextBool(15))
+                {
+                    switch (Main.rand.Next(8))
                     {
                         case 0:
                             caughtType = ItemID.BandofRegeneration;
                             break;
+
                         case 1:
                             caughtType = ItemID.MagicMirror;
                             break;
+
                         case 2:
                             caughtType = ItemID.CloudinaBottle;
                             break;
+
                         case 3:
                             caughtType = ItemID.HermesBoots;
                             break;
+
                         case 4:
                             caughtType = ItemID.EnchantedBoomerang;
                             break;
+
                         case 5:
                             caughtType = ItemID.ShoeSpikes;
                             break;
                     }
-            base.CatchFish(fishingRod, bait, power, liquidType, poolSize, worldLayer, questFish, ref caughtType, ref junk);
-        }
-        public override void PreUpdate()
-        {
-            foreach (Item item in player.inventory)
-            {
-                if (item.type == ModContent.ItemType<BagofBones>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.Bone, 396, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<BoneJavelinStack>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.BoneJavelin, 999, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<BoneThrowingKnifeStack>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.BoneDagger, 396, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<JavelinStack>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.Javelin, 999, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<PoisonedKnifeStack>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.PoisonedKnife, 396, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<ShurikenStack>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.Shuriken, 396, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<SpikyPouch>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.SpikyBall, 999, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<StarAniseStack>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.StarAnise, 396, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<ThrowingKnifeStack>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.ThrowingKnife, 396, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<BucketofBloodWater>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.BloodWater, 30, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<BucketofHolyWater>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.HolyWater, 30, true, 0, true);
-                }
-                if (item.type == ModContent.ItemType<BucketofUnholyWater>())
-                {
-                    item.TurnToAir();
-                    Item.NewItem(player.position, ItemID.ThrowingKnife, 396, true, 0, true);
                 }
             }
-            base.PreUpdate();
         }
     }
 }

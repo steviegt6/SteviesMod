@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,8 +10,8 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
         {
             DisplayName.SetDefault("Endless Chlorophyte Pouch");
             Tooltip.SetDefault("Chases after your enemy");
-            base.SetStaticDefaults();
         }
+
         public override void SetDefaults()
         {
             item.shootSpeed = 5f;
@@ -29,11 +24,10 @@ namespace SteviesMod.Content.Items.Weapons.Ranged.Bullets
             item.value = Item.sellPrice(0, 2);
             item.ranged = true;
             item.rare = ItemRarityID.Lime;
-            base.SetDefaults();
         }
+
         public override void AddRecipes()
         {
-            base.AddRecipes();
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ChlorophyteBullet, 3996);
             recipe.AddTile(TileID.CrystalBall);
