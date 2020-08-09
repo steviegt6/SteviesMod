@@ -1,6 +1,6 @@
 displayName = Stevie's Mod
 author = convicted tomatophile (Stevie) & the Pixel Placers!
-version = 0.1.13
+version = 0.2.0
 icon = icon.png
 homepage = https://forums.terraria.org/index.php?threads/stevies-mod-a-general-content-mod-for-terraria.95031/
 modReferences = TomatoLib@1.0.2

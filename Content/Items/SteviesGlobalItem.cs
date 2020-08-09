@@ -1,13 +1,50 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SteviesMod.Content.Items
 {
     public class SteviesGlobalItem : GlobalItem
     {
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            SpecialEffectsGlobalItem globalItem = item.GetGlobalItem<SpecialEffectsGlobalItem>();
+
+            TooltipLine shiftForMore = new TooltipLine(mod, $"{mod.Name}:ShiftForMore", "Hold shift for more info.")
+            {
+                overrideColor = Color.Gray
+            };
+            TooltipLine effectsTooltip = new TooltipLine(mod, $"{mod.Name}:EffectsTooltip", "")
+            {
+                overrideColor = Color.LightGray
+            };
+
+            if (globalItem.ItemEffects != "" && globalItem.ItemEffects != "No extra info to display!")
+            {
+                effectsTooltip.text = globalItem.ItemEffects;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.LeftShift) || Keyboard.GetState().IsKeyDown(Keys.RightShift))
+                {
+                    tooltips.Remove(shiftForMore);
+                    tooltips.Add(effectsTooltip);
+                }
+                else
+                {
+                    tooltips.Remove(effectsTooltip);
+                    tooltips.Add(shiftForMore);
+                }
+            }
+        }
+
         public override void SetDefaults(Item item)
         {
+            SpecialEffectsGlobalItem globalItem = item.GetGlobalItem<SpecialEffectsGlobalItem>();
+
             switch (item.type)
             {
                 case ItemID.WoodenSword:
@@ -74,7 +111,29 @@ namespace SteviesMod.Content.Items
                 case ItemID.EndlessMusketPouch:
                     item.rare = ItemRarityID.White;
                     break;
+
+                case ItemID.IronPickaxe:
+                    globalItem.ItemEffects = "Test Effect #1" +
+                        "\nTest Effect #2";
+                    break;
+
+                case ItemID.CopperPickaxe:
+                    globalItem.ItemEffects = "Test Effect #3" +
+                        "\nTest Effect #4";
+                    break;
+
+                default:
+                    globalItem.ItemEffects = "No extra info to display!";
+                    break;
             }
         }
+    }
+
+    public class SpecialEffectsGlobalItem : GlobalItem
+    {
+        public override bool InstancePerEntity => true;
+        public override bool CloneNewInstances => true;
+
+        internal string ItemEffects = "";
     }
 }

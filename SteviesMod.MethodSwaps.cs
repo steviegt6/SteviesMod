@@ -177,7 +177,8 @@ namespace SteviesMod
             {
                 return;
             }
-            int num18 = Main.player[Main.myPlayer].statManaMax / 20;
+
+            _ = Main.player[Main.myPlayer].statManaMax / 20;
             int num17 = Main.player[Main.myPlayer].GetModPlayer<SteviesModPlayer>().arcaneFruits;
             if (num17 < 0)
             {
@@ -185,23 +186,23 @@ namespace SteviesMod
             }
             if (num17 > 0)
             {
-                num18 = Main.player[Main.myPlayer].statManaMax / (20 + num17 / 4);
+                _ = Main.player[Main.myPlayer].statManaMax / (20 + num17 / 4);
             }
             _ = Main.player[Main.myPlayer].statManaMax2 / 20;
-            Vector2 vector = Main.fontMouseText.MeasureString(Lang.inter[2].Value);
+            Vector2 vector = Main.fontMouseText.MeasureString(LangAndLocalization.GetLegacyInterface(2).Value);
             int num8 = 50;
             if (vector.X >= 45f)
             {
                 num8 = (int)vector.X + 5;
             }
-            DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, Lang.inter[2].Value, new Vector2(800 - num8 + UI_ScreenAnchorX, 6f), new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor), 0f, default, 1f, SpriteEffects.None, 0f);
+            DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, LangAndLocalization.GetLegacyInterface(2).Value, new Vector2(800 - num8 + UI_ScreenAnchorX, 6f), new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor), 0f, default, 1f, SpriteEffects.None, 0f);
             if (UIDisplay_ManaPerStar <= 20)
             {
                 for (int i = 1; i < Main.player[Main.myPlayer].statManaMax2 / UIDisplay_ManaPerStar + 1; i++)
                 {
-                    int num7 = 255;
                     bool flag = false;
                     float num6 = 1f;
+                    int num7;
                     if (Main.player[Main.myPlayer].statMana >= i * UIDisplay_ManaPerStar)
                     {
                         num7 = 255;
@@ -251,9 +252,9 @@ namespace SteviesMod
             {
                 for (int i = 1; i < Main.player[Main.myPlayer].statManaMax2 / UIDisplay_ManaPerStar + 1; i++)
                 {
-                    int num7 = 255;
                     bool flag = false;
                     float num6 = 1f;
+                    int num7;
                     if (Main.player[Main.myPlayer].statMana >= i * UIDisplay_ManaPerStar)
                     {
                         num7 = 255;
