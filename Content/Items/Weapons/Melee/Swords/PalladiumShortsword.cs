@@ -9,7 +9,6 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Palladium Shortsword");
-            Tooltip.SetDefault("Can penetrate armor");
         }
 
         public override void SetDefaults()
@@ -28,6 +27,9 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
             item.melee = true;
             item.rare = ItemRarityID.LightRed;
             item.autoReuse = true;
+            //ItemEffects = "+10 armor penetration";
+
+            SteviesGlobalItem.SetShortswordDefaults(item, ModContent.ProjectileType<Projectiles.PalladiumShortswordProj>());
         }
 
         public override void HoldItem(Player player) => player.armorPenetration += 10;

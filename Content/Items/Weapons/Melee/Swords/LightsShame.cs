@@ -24,6 +24,8 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
             item.UseSound = SoundID.Item1;
             item.melee = true;
             item.rare = ItemRarityID.Blue;
+
+            SteviesGlobalItem.SetShortswordDefaults(item, ModContent.ProjectileType<Projectiles.LightsShameProj>());
         }
 
         public override void AddRecipes()

@@ -9,7 +9,6 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Adamantite Shortsword");
-            Tooltip.SetDefault("Can penetrate armor");
         }
 
         public override void SetDefaults()
@@ -20,13 +19,14 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
             item.useTime = 23;
             item.scale = 1.2f;
             item.value = ((75 * 100) * 9) * 5;
-            item.useStyle = ItemUseStyleID.Stabbing;
             item.useTurn = false;
             item.knockBack = 7f;
             item.UseSound = SoundID.Item1;
-            item.melee = true;
             item.rare = ItemRarityID.LightRed;
             item.autoReuse = true;
+            //ItemEffects = "+15 armor penetration";
+
+            SteviesGlobalItem.SetShortswordDefaults(item, ModContent.ProjectileType<Projectiles.AdamantiteShortswordProj>());
         }
 
         public override void HoldItem(Player player) => player.armorPenetration += 15;

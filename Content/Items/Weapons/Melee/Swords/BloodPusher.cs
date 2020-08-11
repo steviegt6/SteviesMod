@@ -19,12 +19,12 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
             item.useTime = 17;
             item.scale = 1.1f;
             item.value = ((39 * 100) * 7) * 5;
-            item.useStyle = ItemUseStyleID.Stabbing;
             item.useTurn = false;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item1;
-            item.melee = true;
             item.rare = ItemRarityID.Blue;
+
+            SteviesGlobalItem.SetShortswordDefaults(item, ModContent.ProjectileType<Projectiles.BloodPusherProj>());
         }
 
         public override void AddRecipes()

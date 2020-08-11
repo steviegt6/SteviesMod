@@ -23,6 +23,8 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
             item.knockBack = 4f;
             item.UseSound = SoundID.Item1;
             item.melee = true;
+
+            SteviesGlobalItem.SetShortswordDefaults(item, ModContent.ProjectileType<Projectiles.WoodenShortswordProj>());
         }
 
         public override void AddRecipes()

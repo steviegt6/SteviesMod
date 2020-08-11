@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -135,6 +136,14 @@ namespace SteviesMod
                             break;
                     }
                 }
+            }
+        }
+
+        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        {
+            if (Main.player[Main.myPlayer].HeldItem.type == ItemID.CopperShortsword)
+            {
+                layers.Remove(PlayerLayer.HeldItem);
             }
         }
     }

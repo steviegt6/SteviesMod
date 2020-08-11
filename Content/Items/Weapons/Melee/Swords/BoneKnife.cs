@@ -17,12 +17,12 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
             item.useAnimation = 14;
             item.useTime = 14;
             item.value = 11 * 100;
-            item.useStyle = ItemUseStyleID.Stabbing;
             item.useTurn = false;
             item.knockBack = 6f;
             item.UseSound = SoundID.Item1;
-            item.melee = true;
             item.rare = ItemRarityID.Orange;
+
+            SteviesGlobalItem.SetShortswordDefaults(item, ModContent.ProjectileType<Projectiles.AdamantiteShortswordProj>());
         }
     }
 }

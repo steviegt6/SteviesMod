@@ -18,11 +18,11 @@ namespace SteviesMod.Content.Items.Weapons.Melee.Swords
             item.useTime = 13;
             item.scale = 0.8f;
             item.value = 350;
-            item.useStyle = ItemUseStyleID.Stabbing;
             item.useTurn = false;
             item.knockBack = 4f;
             item.UseSound = SoundID.Item1;
-            item.melee = true;
+
+            SteviesGlobalItem.SetShortswordDefaults(item, ModContent.ProjectileType<Projectiles.BorealWoodShortswordProj>());
         }
 
         public override void AddRecipes()
