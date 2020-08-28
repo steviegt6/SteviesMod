@@ -1,37 +1,50 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 
 namespace SteviesMod.Utilities
 {
-    //AnimatedColor code by pbone (pbone#4569).
-    public class AnimatedColor
+    // AnimatedColor code by pbone (pbone#4569).
+    public struct AnimatedColor
     {
-        private static float _animatedColorCounter = 0f;
-        private static bool _animatedColorLoop = false;
+        public Color[] Colors;
+        public Color color1;
+        public Color color2;
+        public float speedModifier;
 
-        private Color _color1;
-        private Color _color2;
-
-        public AnimatedColor(Color c1, Color c2)
+        /// <param name="c1">The first color</param>
+        /// <param name="c2">The second color</param>
+        /// <param name="speedMod">A way to modifiy how fast it goes. Lower is slower, higher is faster</param>
+        public AnimatedColor(Color c1, Color c2, float speedMod = 25f)
         {
-            _color1 = c1;
-            _color2 = c2;
+            Colors = default;
+            color1 = c1;
+            color2 = c2;
+            speedModifier = speedMod;
         }
 
-        public static void Update()
+        /// <param name="colors">The colors in this AniamtedColor</param>
+        /// <param name="speedMod">A way to modifiy how fast it goes. Higher is slower, lower is faster</param>
+        public AnimatedColor(Color[] colors, float speedMod = 25f)
         {
-            _animatedColorCounter += !_animatedColorLoop ? 0.05f : -0.05f;
-            _animatedColorCounter = MathHelper.Clamp(_animatedColorCounter, 0, 1);
-            if (_animatedColorCounter >= 1)
-            {
-                _animatedColorLoop = true;
-            }
+            Colors = colors;
+            color1 = default;
+            color2 = default;
+            speedModifier = speedMod;
+        }
 
-            if (_animatedColorCounter <= 0)
+        public Color GetColor()
+        {
+            if (Colors == default)
+                return Color.Lerp(color1, color2, (float)(Math.Sin(Main.GameUpdateCount / speedModifier) + 1f) / 2f);
+            else
             {
-                _animatedColorLoop = false;
+                float amount = Main.GameUpdateCount % 60 / speedModifier;
+                int type = (int)(Main.GameUpdateCount / 60 % Colors.Length);
+                return Color.Lerp(Colors[type], Colors[(type + 1) % Colors.Length], amount);
             }
         }
 
-        public Color GetColor() => Color.Lerp(_color1, _color2, _animatedColorCounter);
+        public Vector3 LightingColor() => GetColor().ToVector3() / 255f;
     }
 }
